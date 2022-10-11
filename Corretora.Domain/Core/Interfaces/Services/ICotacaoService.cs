@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Corretora.Domain.Core.Interfaces.Services
+﻿namespace Corretora.Domain.Core.Interfaces.Services
 {
     public interface ICotacaoService : IServiceBase<Cotacao>
     {
