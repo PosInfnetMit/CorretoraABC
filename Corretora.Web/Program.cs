@@ -1,11 +1,18 @@
+using Corretora.Repository.Context;
 using Corretora.Web.Configuration;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<CorretoraContext>(c =>
+{
+    c.UseSqlServer(builder.Configuration.GetConnectionString("Corretora"));
+});
 
 DIConfig.ResolveDependecies(builder.Services);
 
