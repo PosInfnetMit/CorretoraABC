@@ -4,7 +4,7 @@ using Skender.Stock.Indicators;
 
 namespace Corretora.Domain.Core.Services
 {
-    public class CIF : ICIF
+    public class CIFService : ICIFService
     {
         public async Task<IEnumerable<Ema>> CalcularEma(IEnumerable<Cotacao> cotacoes, int dias)
         {
