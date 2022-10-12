@@ -8,9 +8,7 @@ namespace Corretora.Domain.Core.Services
     {
         public async Task<IEnumerable<Ema>> CalcularEma(IEnumerable<Cotacao> cotacoes, int dias)
         {
-            var quotes = cotacoes.ToQuotes();
-
-            var result = quotes.GetEma(dias);
+            var result = cotacoes.GetEma(dias);
 
             var valoresEma = result.Select(r => new Ema
             {
@@ -23,9 +21,7 @@ namespace Corretora.Domain.Core.Services
 
         public async Task<IEnumerable<Macd>> CalcularMacd(IEnumerable<Cotacao> cotacoes)
         {
-            var quotes = cotacoes.ToQuotes();
-
-            var result =  quotes.GetMacd();
+            var result = cotacoes.GetMacd();
 
             var valoresMacd = result.Select(r => new Macd
             {
