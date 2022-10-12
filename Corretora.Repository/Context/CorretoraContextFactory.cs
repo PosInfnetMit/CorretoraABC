@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
+
 namespace Corretora.Repository.Context
 {
 
@@ -12,15 +13,14 @@ namespace Corretora.Repository.Context
         {
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                        .SetBasePath(Directory.GetCurrentDirectory())                                                
-                        .Build();
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json").Build();
+
             var connectionString = configuration.GetConnectionString("Corretora");
-
-
             var optionsBuilder = new DbContextOptionsBuilder<CorretoraContext>();
-            //builder.Configuration.AddJsonFile("errorcodes.json"
-           
+            
             optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.EnableSensitiveDataLogging();
             return new CorretoraContext(optionsBuilder.Options);
 
         }
