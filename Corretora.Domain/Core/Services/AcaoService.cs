@@ -23,6 +23,11 @@ namespace Corretora.Domain.Core.Services
             return await _acaoRepository.Get(id);
         }
 
+        public async Task<Acao> GetAcaoAsync()
+        {
+            return await _acaoRepository.GetAcaoAsync();
+        }
+
         public async Task<IEnumerable<Acao>> GetAll()
         {
             return await _acaoRepository.GetAll();    

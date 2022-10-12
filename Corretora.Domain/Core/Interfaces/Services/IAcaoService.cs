@@ -2,5 +2,6 @@
 {
     public interface IAcaoService : IServiceBase<Acao>
     {
+        Task<Acao> GetAcaoAsync();
     }
 }

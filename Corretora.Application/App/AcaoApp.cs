@@ -23,6 +23,11 @@ namespace Corretora.Application.App
             return await _acaoService.Get(id);
         }
 
+        public async Task<Acao> GetAcaoAsync()
+        {
+            return await _acaoService.GetAcaoAsync();
+        }
+
         public async Task<IEnumerable<Acao>> GetAll()
         {
             return await _acaoService.GetAll();   

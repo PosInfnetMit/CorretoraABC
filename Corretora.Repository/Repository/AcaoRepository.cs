@@ -2,6 +2,7 @@
 using Corretora.Domain.Core.Interfaces.Repository;
 using Corretora.Repository.Context;
 using Corretora.Repository.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Corretora.Repository.Repository
 {
@@ -9,8 +10,18 @@ namespace Corretora.Repository.Repository
     {
         public AcaoRepository(CorretoraContext corretoraContext) : base(corretoraContext)
         {
+
+           
+
         }
 
-     
+        public async Task<Acao> GetAcaoAsync()
+        {
+            return await this.Query.Include("Cotacoes")
+                                    .FirstOrDefaultAsync();
+
+        }
+      
+
     }
 }

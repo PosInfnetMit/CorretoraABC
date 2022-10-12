@@ -2,5 +2,6 @@
 {
     public interface IAcaoRepository : IRepository<Acao>
     {
+        Task<Acao> GetAcaoAsync();
     }
 }
