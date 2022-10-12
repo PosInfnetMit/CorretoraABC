@@ -1,4 +1,4 @@
-using Corretora.Repository.Context;
+using Corretora.Repository;
 using Corretora.Web.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<CorretoraContext>(c =>
-{
-    c.UseSqlServer(builder.Configuration.GetConnectionString("Corretora"));
-});
+builder.Services        
+            .RegisterRepository(builder.Configuration.GetConnectionString("Corretora"));
 
 DIConfig.ResolveDependecies(builder.Services);
 

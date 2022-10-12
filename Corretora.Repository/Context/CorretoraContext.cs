@@ -9,7 +9,7 @@ namespace Corretora.Repository.Context
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {            
+        {
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -19,8 +19,22 @@ namespace Corretora.Repository.Context
             base.OnModelCreating(modelBuilder);
         }
 
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            // Configuração que pega todas as propriedades que são datetime e mapeiam para a coluna do tipo datetime
+            configurationBuilder
+                .Properties<DateTime>()
+                .HaveColumnType("datetime");
 
 
+            configurationBuilder
+                .Properties<int>()
+                .HaveColumnType("int");
 
+            configurationBuilder
+                .Properties<string>()
+                .HaveColumnType("varchar");
+
+        }
     }
 }
