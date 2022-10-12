@@ -15,8 +15,9 @@ namespace Corretora.Repository.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CorretoraContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CorretoraContext).Assembly);           
             base.OnModelCreating(modelBuilder);
+            CorretoraContextInitial.LoadInitialData(modelBuilder);
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

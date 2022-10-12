@@ -1,11 +1,6 @@
 ﻿using Corretora.Domain.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Corretora.Repository.Mapping
 {
@@ -15,7 +10,12 @@ namespace Corretora.Repository.Mapping
         {
             builder.ToTable("Cotacao");
             builder.HasKey(x => x.Id);
-            
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+            builder.HasOne(x => x.Acao)
+                   .WithMany(x => x.Cotacoes)
+                   .HasForeignKey(x => x.AcaoId);
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Corretora.Repository
             services.AddDbContext<CorretoraContext>(c =>
             {
                 c.UseSqlServer(connectionString);
+                c.EnableSensitiveDataLogging();
             });
 
             services.AddScoped(typeof(Repository<>));
